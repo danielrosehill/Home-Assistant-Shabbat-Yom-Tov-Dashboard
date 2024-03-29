@@ -1,0 +1,90 @@
+views:
+  - title: Home
+    type: sections
+    cards: []
+    sections:
+      - type: grid
+        cards:
+          - type: light
+            entity: light.shabbat_indicator
+            name: Shabbat indicator light
+        title: Indicators
+      - type: grid
+        cards:
+          - type: tile
+            entity: sensor.hebcal_shabbat_entry
+            vertical: true
+          - type: tile
+            entity: sensor.hebcal_shabbat_came_out
+            vertical: true
+            name: Shabbat out
+          - type: entity
+            entity: sensor.jewish_calendar_parshat_hashavua
+            name: Parsha
+          - type: entity
+            entity: sensor.jewish_calendar_holiday
+            name: Hag?
+          - type: entity
+            entity: sensor.jewish_calendar_date
+            name: Date
+        title: Shabbat info
+      - type: grid
+        cards:
+          - type: entity
+            entity: switch.plata
+            name: Plata plug
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: input_boolean.shabbat_mode
+                state: 'on'
+            card:
+              type: picture
+              image: /local/images/shab_candles.jpg
+        title: Shabbat appliances
+      - type: grid
+        cards:
+          - type: tile
+            entity: sensor.hebcal_is_shabbat
+            vertical: true
+          - type: tile
+            entity: sensor.hebcal_is_yomtov
+            vertical: true
+          - type: tile
+            entity: binary_sensor.jewish_calendar_issur_melacha_in_effect
+            name: Issur melacha?
+            vertical: true
+          - type: tile
+            entity: binary_sensor.jewish_calendar_erev_shabbat_hag
+            vertical: true
+          - type: entity
+            entity: input_boolean.shabbat_mode
+            name: Shabbat / Hag State (Toggle)
+        title: 'Automation states:'
+      - type: grid
+        cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              target:
+                entity_id: scene.start_of_shabbat
+              data: {}
+            entity: light.bedroom_switch_2
+            name: Start of Shabbat (activate scene)
+            icon: mdi:star-david
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: input_boolean.shabbat_mode
+            name: Shabbat or Hag?
+            show_state: true
+        title: Manual overrides
+  - title: Schedule
+    path: schedule
+    cards: []
+title: Shabbat / Hag
