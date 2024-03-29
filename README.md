@@ -10,4 +10,12 @@ For instance, I documented the helper I used to roll HebCal's two Shabbat and Yo
 
 https://medium.com/daniels-tech-world/shabbat-yom-tov-home-assistant-automations-part-2-helper-configuration-35ddc2be1cc1
 
+**Notation**
+
+I'm using the notation V1V1 for "point" updates (ie, V1.1, V1.2, etc)
+
+The YAML files are nested under the update folder.
+
+
+
 ![shab_dashboard_2.png](images/shab_dashboard_2.png.png)
